@@ -1,60 +1,53 @@
 set nocompatible
-set nu 
+set nu
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
-
-Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'nelstrom/vim-markdown-preview'
-
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/Pydiction'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/syntastic'
-
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'klen/rope-vim'
-
-Plugin 'ervandew/supertab'
-
-Plugin 'tmhedberg/SimpylFold'
+" installing vim-plug in case it doesn't exists
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'jnurmine/Zenburn'
-
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'vim-scripts/Pydiction'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'tmhedberg/SimpylFold'
+Plug 'nelstrom/vim-markdown-preview'
+Plug 'jtratner/vim-flavored-markdown'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/syntastic'
+call plug#end()
 
 filetype plugin indent on
 
-let g:SimplyFold_docstring_preview=1
-
-
+let g:SymplyFold_docstric_preview=1
 let g:ycm_autoclose_preview_window_after_completion=1
 
-
-let mapleader="_"
+let mapleader="\<space>"
 
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-call togglebg#map("<F5>")
-
 
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
 set noswapfile
 
-py3 << EOF
+" turning on systemwide powerline
+
+python << EOF
+from powerline.vim import setup as powerline_setup
+powerline_setup()
+del powerline_setup
+EOF
+
+" support for virtualenv
+python << EOF
 import os.path
 import sys
 import vim
@@ -62,12 +55,12 @@ if 'VIRTUAL_ENV' in os.environ:
 	project_base_dir = os.environ['VIRTUAL_ENV']
 	sys.path.insert(0, project_base_dir)
 	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-	exec(compile(open( activate_this ,"rb" ).read(), activate_this, 'exec'),dict(__file__ = activate_this))
+	execfile(activate_this, dict(__file__=activate_this))
 EOF
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-" ------- PEP8- -----
+" ------------- PEP8 ---------
 
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set tabstop=4
 
@@ -98,3 +91,4 @@ nnoremap <space> za
 
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 set cursorcolumn
+
