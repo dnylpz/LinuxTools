@@ -23,6 +23,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
+Plug 'OrangeT/vim-csharp'
 call plug#end()
 
 filetype plugin indent on
