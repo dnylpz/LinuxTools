@@ -28,12 +28,14 @@ antigen theme agnoster
 
 antigen apply
 alias vi=vim
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export PATH=/usr/local/bin:$PATH
 export MONO_HOME=/Library/Frameworks/Mono.framework
 export PATH=$PATH:$MONO_HOME/Commands
 export DOTNET_HOME=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_HOME
-
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 . /usr/local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
