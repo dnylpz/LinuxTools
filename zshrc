@@ -1,7 +1,7 @@
 if [ ! -e ~/.oh-my-zsh/antigen.zsh ]
 then
 	mkdir ./.oh-my-zsh
-	curl git.io/antigen > .oh-my-zsh/antigen.zsh
+	curl -L git.io/antigen > .oh-my-zsh/antigen.zsh
 fi
 
 source ~/.oh-my-zsh/antigen.zsh
@@ -33,6 +33,7 @@ export MONO_HOME=/Library/Frameworks/Mono.framework
 export PATH=$PATH:$MONO_HOME/Commands
 export DOTNET_HOME=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_HOME
+
 . /usr/local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
