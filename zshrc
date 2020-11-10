@@ -11,7 +11,6 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle pip
 antigen bundle docker
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle terraform
 antigen bundle python 
 antigen bundle pylint
@@ -36,6 +35,6 @@ export PATH=$PATH:$MONO_HOME/Commands
 export DOTNET_HOME=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_HOME
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-. /usr/local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/local/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh

@@ -41,14 +41,14 @@ set noswapfile
 
 " turning on systemwide powerline
 
-python << EOF
+py3 << EOF
 from powerline.vim import setup as powerline_setup
 powerline_setup()
 del powerline_setup
 EOF
 
 " support for virtualenv
-python << EOF
+py3 << EOF
 import os.path
 import sys
 import vim
@@ -69,7 +69,7 @@ au BufRead,BufNewFile *.py,.*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py set softtabstop=4 
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s/+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s+$/
 
 highlight BadWhitespace ctermbg=red guibg=red
 
@@ -92,4 +92,4 @@ nnoremap <space> za
 
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 set cursorcolumn
-
+set cursorline
